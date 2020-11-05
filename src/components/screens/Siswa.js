@@ -137,12 +137,8 @@ export default class Siswa extends React.Component{
         .then(res => res.json())
         .then(result => {
             this.setState({
-                siswaData : result.results
+                siswaData : result
             })
-            // console.log("NYOBA", result[0][1])
-            // result.map(i => {
-            //     console.log("NYOBA", i[1])
-            // })
         })
         .catch(err => {
             console.log(err)
@@ -162,6 +158,11 @@ export default class Siswa extends React.Component{
                         }}
                     >
                         <h3 className="left">Siswa</h3>
+                        <Link to="/cluster">
+                            <button className="btn waves-effect waves-light right">
+                                Hitung Cluster
+                            </button>
+                        </Link>
                         <i onClick={() => this.toggleInput()}
                             className="medium right material-icons">add_circle
                         </i>
@@ -180,7 +181,7 @@ export default class Siswa extends React.Component{
                                 <tr>
                                     <th>NIS</th>
                                     <th>Nama</th>
-                                    <th>Minat</th>
+                                    <th>Cluster</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -196,14 +197,17 @@ export default class Siswa extends React.Component{
                                             <td><Link to={"/detail-siswa/"+item.id}>
                                                 {item.fullname}
                                             </Link></td>
-                                            {item.id_minat == 1 &&
+                                            {item.cluster == 1 ? 
                                                 <td>Matematika</td>
+                                                : <td></td>
                                             }
-                                            {item.id_minat == 2 &&
+                                            {item.cluster == 2 ?
                                                 <td>IPA</td>
+                                                : <td></td>
                                             }
-                                            {item.id_minat == 3 &&
+                                            {item.cluster == 3 ?
                                                 <td>B. Indonesia</td>
+                                                : <td></td>
                                             }
                                             <td>
                                                 <i className="i-edit  material-icons"
@@ -214,101 +218,6 @@ export default class Siswa extends React.Component{
                                                 delete</i>
                                             </td>
                                         </tr>
-                                        {this.state.detailSiswa == true &&
-                                        this.state.dataDetail === item.id ? (
-                                        <>
-                                            <tr>
-                                                <td colSpan="4">
-                                                    Detail Siswa
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>
-                                                    NIS : 
-                                                </td>
-                                                <td colSpan="2">
-                                                    {item.id}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>
-                                                    Nama Lengkap :
-                                                </td>
-                                                <td colSpan="2">
-                                                    {item.fullname}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>
-                                                    Minat :
-                                                </td>
-                                                <td colSpan="2">
-                                                    {item.id_minat == 1 &&
-                                                        <td>Matematika</td>
-                                                    }
-                                                    {item.id_minat == 2 &&
-                                                        <td>IPA</td>
-                                                    }
-                                                    {item.id_minat == 3 &&
-                                                        <td>B. Indonesia</td>
-                                                    }
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>
-                                                    Kelas :
-                                                </td>
-                                                <td colSpan="2">
-                                                    {item.student_class}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>
-                                                    Nilai Matematika :
-                                                </td>
-                                                <td colSpan="2">
-                                                    {item.score_math}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>
-                                                    Nilai IPA :
-                                                </td>
-                                                <td colSpan="2">
-                                                    {item.score_science}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                                <td>
-                                                    Nilai B. Indonesia :
-                                                </td>
-                                                <td colSpan="2">
-                                                    {item.score_indonesian}
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td colSpan="4" type="text">
-                                                    {Number.parseInt(item.cluster, 10) == 0 &&
-                                                        <td>Siswa ini masuk pada kelas ekstrakurikuler Matematika</td>
-                                                    }
-                                                    {Number.parseInt(item.cluster, 10) == 1 &&
-                                                        <td>Siswa ini masuk pada kelas ekstrakurikuler IPA</td>
-                                                    }
-                                                    {Number.parseInt(item.cluster, 10) == 3 &&
-                                                        <td>Siswa ini masuk pada kelas ekstrakurikuler B. Indonesia</td>
-                                                    }
-                                                </td>
-                                            </tr>
-                                        </>
-                                        ) : null }
-
                                         
                                         {this.state.updateSiswa == true &&
                                         this.state.dataUpdate === item.id ? (

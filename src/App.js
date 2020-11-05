@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Home from './components/screens/Home'
 import Login from './components/screens/Login'
 import Siswa from './components/screens/Siswa'
+import Cluster from './components/screens/Cluster'
 import DetailSiswa from './components/screens/DetailSiswa'
 import Minat from './components/screens/Minat'
 import Tentang from './components/screens/Tentang'
@@ -29,7 +30,8 @@ const Routing = () => {
   return(
     <Switch>
       <Route exact path="/">
-        <Login/>
+        <Navbar/>
+        <Home/>
       </Route>
       <Route path="/home">
         <Navbar/>
@@ -38,6 +40,10 @@ const Routing = () => {
       <Route path="/siswa">
         <Navbar/>
         <Siswa/>
+      </Route>
+      <Route path="/cluster">
+        <Navbar/>
+        <Cluster/>
       </Route>
       <Route path="/detail-siswa/:siswaid">
         <Navbar/>

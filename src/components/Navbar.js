@@ -22,7 +22,8 @@ const Navbar = () => {
             ]
         }else{
             return [
-                <li><Link to="/">Signin</Link></li>
+                <li><Link to="/">Signin</Link></li>,
+                <li><Link to="/siswa">Siswa</Link></li>
             ]
         }
     }
