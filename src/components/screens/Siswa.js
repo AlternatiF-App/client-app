@@ -197,17 +197,14 @@ export default class Siswa extends React.Component{
                                             <td><Link to={"/detail-siswa/"+item.id}>
                                                 {item.fullname}
                                             </Link></td>
-                                            {item.cluster == 1 ? 
-                                                <td>Matematika</td>
-                                                : <td></td>
-                                            }
-                                            {item.cluster == 2 ?
-                                                <td>IPA</td>
-                                                : <td></td>
-                                            }
-                                            {item.cluster == 3 ?
-                                                <td>B. Indonesia</td>
-                                                : <td></td>
+                                            {item.cluster == 0 ? 
+                                                <td>Matematika</td> : 
+                                                (item.cluster == 1 ?
+                                                    <td>IPA</td>    
+                                                : (item.cluster == 2 ?
+                                                    <td>B. Indonesia</td>    
+                                                    : <td></td>)
+                                                )
                                             }
                                             <td>
                                                 <i className="i-edit  material-icons"
