@@ -6,13 +6,15 @@ const DetailSiswa = () => {
 
     const {siswaid} = useParams()
     const [data, setData] = useState([])
+    const url = "http://localhost:8000/"
 
     useEffect(() => {
-        fetch(`http://localhost:8000/students/${siswaid}/`, {
+        fetch(`${url}api/students/${siswaid}/`, {
             method:"GET",
             headers:{
                 "Content-Type":"application/json",
-                "Content-Type":"application/x-www-form-urlencoded"
+                "Content-Type":"application/x-www-form-urlencoded",
+                "Authorization":"Bearer "+localStorage.getItem("access token")
             }
         })
         .then(res => res.json())

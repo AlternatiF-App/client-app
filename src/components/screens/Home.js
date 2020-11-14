@@ -3,6 +3,7 @@ import '../../App.css'
 import avaImg from '../../assets/img/ava.jpg'
 
 export default function Home() {
+
     return (
         <>
         <div className="section sec-1-wrap no-pad-bot" id="index-banner">
