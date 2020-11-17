@@ -49,10 +49,6 @@
     color: white;
 }
 
-.center{
-    padding: 10px;
-}
-
 .lg-con{
     border-radius: solid 6px;
     width: 50% !important;
@@ -60,6 +56,35 @@
     margin-top: 30px !important;
 }
 
-.btn-login{
-    width: 100% !important;
+.container-login{
+    background-image: url('./assets/img/img-login.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.form-login{
+    background-color: whitesmoke;
+    width: fit-content;
+    align-self: center;
+    margin: 100px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.input-field{
+    width: 500px;
+}
+
+.btn-update-cluster{
+    background-color: maroon;
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
 }

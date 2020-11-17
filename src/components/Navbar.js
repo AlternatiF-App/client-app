@@ -9,48 +9,32 @@ const Navbar = () => {
 
     var onLogout = () => {
             
-        // var formData = new FormData()
-        // formData.append('refresh', localStorage.getItem("refresh"))
-        // console.log('logout', formData)
+        var formData = new FormData()
+        formData.append('refresh', localStorage.getItem("refresh"))
+        console.log('logout', formData)
 
         fetch("http://localhost:8000/api/logout/", {
             method:"POST",
             headers:{
-                "Authorization":"Bearer "+localStorage.getItem("access token"),
                 "Content-Type":"application/json",
-                "Content-Type":"application/x-www-form-urlencoded"
+                "Content-Type":"application/x-www-form-urlencoded",
+                "Authorization":"Bearer "+localStorage.getItem("access token")
             },
-            body:JSON.stringify({
-                refresh:"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYwNTQyOTY2OSwianRpIjoiZDdiZDYxMjI1MjFjNDRjOWExMzliZDIxOGFmZWVkZmUiLCJ1c2VyX2lkIjoxfQ.BnCpMNDXLHNEFs-TBHmZmN2dA23D3T8oAuZxL4Y1C1Y"
-            })
+            body:JSON.stringify({"refresh":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYwNTQyNzg3MiwianRpIjoiODg1ZDg4YzNkODFkNGViMDhiZGQyYjhjYzJhYjk5NGEiLCJ1c2VyX2lkIjoxfQ.uVV7pOrliXDnsPZbVxrYUoRIkKhbSEtHq9taNPx3C9c"})
         })
         .then(res => res.json())
         .then(result => {
-            console.log('logout', result)
+            console.log("LOGOUT", result)
+            if(result.message){
+                localStorage.clear()
+                dispatch({type:"CLEAR"})
+                history.push('/signin')
+            }else{
+                M.toast({html: result.detail, classes:"#c62828 red darken-3"})
+            }
+        }).catch(err => {
+            console.log(err)
         })
-
-        // fetch("http://localhost:8000/api/logout/", {
-        //     method:"POST",
-        //     headers:{
-        //         "Content-Type":"application/json",
-        //         "Content-Type":"application/x-www-form-urlencoded",
-        //         "Authorization":"Bearer "+localStorage.getItem("access token")
-        //     },
-        //     body:JSON.stringify({"refresh":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYwNTQyNzg3MiwianRpIjoiODg1ZDg4YzNkODFkNGViMDhiZGQyYjhjYzJhYjk5NGEiLCJ1c2VyX2lkIjoxfQ.uVV7pOrliXDnsPZbVxrYUoRIkKhbSEtHq9taNPx3C9c"})
-        // })
-        // .then(res => res.json())
-        // .then(result => {
-        //     console.log("LOGOUT", result)
-        //     if(result.message){
-        //         localStorage.clear()
-        //         dispatch({type:"CLEAR"})
-        //         history.push('/signin')
-        //     }else{
-        //         M.toast({html: result.detail, classes:"#c62828 red darken-3"})
-        //     }
-        // }).catch(err => {
-        //     console.log(err)
-        // })
     }
 
     const renderList = () =>  {
@@ -61,7 +45,11 @@ const Navbar = () => {
                 <li><Link to="/minat">Minat</Link></li>,
                 <li><Link to="/tentang">Tentang</Link></li>,
                 <li><Link to="/bantuan">Bantuan</Link></li>,
-                <li onClick={onLogout}>
+                <li onClick={() => {
+                    localStorage.clear()
+                    dispatch({type:"CLEAR"})
+                    history.push('/login')
+                }}>
                     Logout
                 </li>
             ]

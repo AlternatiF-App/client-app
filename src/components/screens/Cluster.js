@@ -16,7 +16,6 @@ class cluster extends Component {
     
     onUpdate = () => {
         this.state.idStudents.map((item,index=0) => {
-            // console.log('cok',this.state.clustersStudents[index])
             fetch(this.url+"api/update-clusters/", {
                 method:"PUT",
                 headers:{
@@ -30,7 +29,6 @@ class cluster extends Component {
             })
             .then(res => res.json())
             .then(result => {
-                console.log('cok', result)
                 return result
             })
             .catch(err => {
@@ -72,7 +70,6 @@ class cluster extends Component {
                     this.state.clustersStudents.push(i)
                 }
             })
-            // console.log('cok cluster',this.state.clustersStudents)
         })
         .catch(err => {
             console.log(err)
@@ -86,8 +83,9 @@ class cluster extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.onUpdate}>
-                    JAJAL COK
+                <button className="btn-update-cluster"
+                    onClick={this.onUpdate}>
+                    Update Cluster
                 </button>
             </div>
         )

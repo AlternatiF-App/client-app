@@ -31,7 +31,6 @@ const Routing = () => {
   return(
     <Switch>
       <Route exact path="/">
-        <Navbar/>
         <Login/>
       </Route>
       <Route path="/home">

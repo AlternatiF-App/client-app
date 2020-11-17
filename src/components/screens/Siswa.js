@@ -3,6 +3,7 @@ import '../../App.css'
 import {Link} from 'react-router-dom'
 import FormTambah from './FormTambah'
 import ListMinat from './ListMinat'
+import UpdateCluster from './Cluster'
 
 class Siswa extends React.Component{
 
@@ -141,11 +142,6 @@ class Siswa extends React.Component{
                     <div className="row"
                         style={{borderBottom:"1px solid grey"}}>
                         <h3 className="left">Siswa</h3>
-                        <Link to="/cluster">
-                            <button className="btn waves-effect waves-light right">
-                                Hitung Cluster
-                            </button>
-                        </Link>
                         <i onClick={() => this.toggleInput()}
                             className="medium right material-icons">add_circle
                         </i>
@@ -186,7 +182,7 @@ class Siswa extends React.Component{
                                                         <td>IPA</td> : 
                                                         ( item.cluster == "2" ? 
                                                             <td>B. Indonesia</td> : 
-                                                            <td></td>
+                                                            <td><UpdateCluster/></td>
                                                         )
                                                     )
                                                 )

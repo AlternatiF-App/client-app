@@ -42,9 +42,9 @@ const Login = ()  => {
     }
 
     return (
-        <div className="container lg-con">
-            <div className="center">
-                <h5>LOGIN</h5>
+        <div className="container-login">
+            <div className="form-login">
+                <h5><strong>LOGIN</strong></h5>
                 <div className="input-field">
                     <input name="email" 
                         type="email"
@@ -59,7 +59,7 @@ const Login = ()  => {
                         onChange={(e) => setPassword(e.target.value)}/>
                     <label>Password</label>
                 </div>
-                <button className="input-field btn waves-effect waves-light btn-login"  
+                <button className="input-field btn-login btn waves-effect waves-light"  
                     onClick={() => LoginSubmit()}>
                         Login
                 </button>
