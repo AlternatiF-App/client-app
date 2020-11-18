@@ -28,7 +28,7 @@ const Navbar = () => {
             if(result.message){
                 localStorage.clear()
                 dispatch({type:"CLEAR"})
-                history.push('/signin')
+                history.push('/login')
             }else{
                 M.toast({html: result.detail, classes:"#c62828 red darken-3"})
             }

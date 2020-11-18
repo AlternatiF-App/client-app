@@ -24,7 +24,7 @@ export default function FormTambah() {
         })
         .then(res => res.json())
         .then(result => {
-            console.log(result.results)
+            // console.log(result.results)
             setMinatData(result.results)
         })
         .catch(err => {
@@ -54,7 +54,7 @@ export default function FormTambah() {
         })
         .then(res => res.json())
         .then(result => {
-            console.log("POST", result)
+            // console.log("POST", result)
             history.push("/siswa")
         }).catch(err => {
             console.log(err)
