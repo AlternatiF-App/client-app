@@ -47,22 +47,6 @@ class Siswa extends React.Component{
 
                     <ListStudents/>
 
-                    <div>
-                        <ul className="pagination right">
-                            <li style={{marginRight:"5px", borderRadius:"5px"}} 
-                                className="waves-effect active">
-                                    <a>
-                                        Prev
-                                    </a>
-                            </li>
-                            <li style={{marginLeft:"5px", borderRadius:"5px"}}
-                                className="waves-effect active">
-                                    <a>
-                                        Next
-                                    </a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         );

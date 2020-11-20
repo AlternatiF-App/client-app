@@ -3,6 +3,7 @@ import ListMinat from './ListMinat'
 import UpdateCluster from './Cluster'
 import '../../App.css'
 import {Link} from 'react-router-dom'
+import {getAllStudents} from '../../services/students'
 
 export default class ListStudents extends Component {
 
@@ -20,6 +21,7 @@ export default class ListStudents extends Component {
             siswaData : [],
             dataUpdate : 0,
             dataDetail : 0,
+            loading: true,
 
             // UPDATE
             nis : null,
@@ -120,6 +122,51 @@ export default class ListStudents extends Component {
         .then(result => {
             this.setState({
                 prev_url : result.prev,
+                next_url : result.next,
+                siswaData : result.results
+            })
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
+    onNext(){
+        fetch(this.state.next_url, {
+            method:"GET",
+            headers:{
+                "Content-Type":"application/json",
+                "Content-Type":"application/x-www-form-urlencoded",
+                "Authorization":"Bearer "+localStorage.getItem("access token")
+            }
+        })
+        .then(res => res.json())
+        .then(result => {
+            this.setState({
+                prev_url : result.previous,
+                next_url : result.next,
+                siswaData : result.results
+            })
+        })
+        .catch(err => {
+            console.log(err)
+        })
+        
+    }
+
+    onPrev(){
+        fetch(this.state.prev_url, {
+            method:"GET",
+            headers:{
+                "Content-Type":"application/json",
+                "Content-Type":"application/x-www-form-urlencoded",
+                "Authorization":"Bearer "+localStorage.getItem("access token")
+            }
+        })
+        .then(res => res.json())
+        .then(result => {
+            this.setState({
+                prev_url : result.previous,
                 next_url : result.next,
                 siswaData : result.results
             })
@@ -269,6 +316,23 @@ export default class ListStudents extends Component {
                         }
                     </tbody>
                 </table>
+
+                <div>
+                    <ul className="pagination right">
+                        <li style={{marginRight:"5px", borderRadius:"5px"}} 
+                            className="waves-effect active">
+                                <a onClick={() => this.onPrev()}>
+                                    Prev
+                                </a>
+                        </li>
+                        <li style={{marginLeft:"5px", borderRadius:"5px"}}
+                            className="waves-effect active">
+                                <a onClick={() => this.onNext()}>
+                                    Next
+                                </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         )
     }

@@ -6,34 +6,25 @@ import M from 'materialize-css'
 const Navbar = () => {
     const {state, dispatch} = useContext(UserContext)
     const history = useHistory()
+    const ref_token = localStorage.getItem("refresh")
 
-    var onLogout = () => {
-            
-        var formData = new FormData()
-        formData.append('refresh', localStorage.getItem("refresh"))
-        console.log('logout', formData)
-
+    const onLogout = () => {
         fetch("http://localhost:8000/api/logout/", {
             method:"POST",
             headers:{
                 "Content-Type":"application/json",
-                "Content-Type":"application/x-www-form-urlencoded",
                 "Authorization":"Bearer "+localStorage.getItem("access token")
             },
-            body:JSON.stringify({"refresh":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYwNTQyNzg3MiwianRpIjoiODg1ZDg4YzNkODFkNGViMDhiZGQyYjhjYzJhYjk5NGEiLCJ1c2VyX2lkIjoxfQ.uVV7pOrliXDnsPZbVxrYUoRIkKhbSEtHq9taNPx3C9c"})
+            body:JSON.stringify({
+                refresh:ref_token
+            })
         })
         .then(res => res.json())
-        .then(result => {
-            console.log("LOGOUT", result)
-            if(result.message){
-                localStorage.clear()
-                dispatch({type:"CLEAR"})
-                history.push('/login')
-            }else{
-                M.toast({html: result.detail, classes:"#c62828 red darken-3"})
-            }
-        }).catch(err => {
-            console.log(err)
+        .then(results => {
+            console.log("logout", results)
+        })
+        .catch(error => {
+            console.log(error)
         })
     }
 
@@ -48,7 +39,7 @@ const Navbar = () => {
                 <li onClick={() => {
                     localStorage.clear()
                     dispatch({type:"CLEAR"})
-                    history.push('/login')
+                    history.push('/')
                 }}>
                     Logout
                 </li>
