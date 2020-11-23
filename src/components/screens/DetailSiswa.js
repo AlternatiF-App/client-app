@@ -19,7 +19,7 @@ const DetailSiswa = () => {
         })
         .then(res => res.json())
         .then(result => {
-            console.log("COK",result)
+            console.log("detail siswa",result)
             setData(result)
         })
         .catch(err => {
