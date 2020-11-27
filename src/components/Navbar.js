@@ -11,6 +11,7 @@ const Navbar = () => {
         if(username === 'admin'){
             return [
                 <li><Link to="/admin-siswa">Siswa</Link></li>,
+                <li><Link to="/get-users">Pengguna</Link></li>,
                 <li><Link to="/minat">Minat</Link></li>,
                 <li><Link to="/tentang">Tentang</Link></li>,
                 <li><Link to="/bantuan">Bantuan</Link></li>,

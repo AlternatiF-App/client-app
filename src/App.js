@@ -9,6 +9,7 @@ import DetailSiswa from './components/screens/DetailSiswa'
 import Minat from './components/screens/Minat'
 import Tentang from './components/screens/Tentang'
 import Bantuan from './components/screens/Bantuan'
+import Users from "./components/screens/AdminAddUser/Users"
 import 'materialize-css/dist/css/materialize.min.css';
 import "./App.css"
 import {BrowserRouter,  Route, Switch, useHistory} from 'react-router-dom'
@@ -55,6 +56,10 @@ const Routing = () => {
       <Route path="/detail-siswa/:siswaid">
         <Navbar/>
         <DetailSiswa/>
+      </Route>
+      <Route path="/get-users">
+        <Navbar/>
+        <Users/>
       </Route>
       <Route path="/minat">
         <Navbar/>
