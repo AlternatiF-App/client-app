@@ -13,7 +13,7 @@ export default function Home() {
                     <h5 className="header col s12 black-text">Menentukan kelas ekstrakurikuler olimpiade untuk siswa.</h5>
                 </div>
                 <div className="row center">
-                    <a href="http://materializecss.com/getting-started.html" id="download-button" className="btn-large waves-effect waves-light black">Get Started</a>
+                    <a id="download-button" className="btn-large waves-effect waves-light black">Get Started</a>
                 </div>
             </div>
         </div>

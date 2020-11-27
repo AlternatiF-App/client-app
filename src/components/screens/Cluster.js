@@ -16,6 +16,7 @@ class cluster extends Component {
     
     onUpdate = () => {
         this.state.idStudents.map((item,index=0) => {
+            console.log('CLUS', item, this.state.clustersStudents[index])
             fetch(this.url+"api/update-clusters/", {
                 method:"PUT",
                 headers:{
@@ -39,12 +40,11 @@ class cluster extends Component {
     }
 
     componentDidMount(){
-        fetch(this.url+"api/students/", {
+        fetch(this.url+"api/students-update/", {
             method:"GET",
             headers:{
                 "Authorization":"Bearer "+localStorage.getItem("access token"),
-                "Content-Type":"application/json",
-                "Content-Type":"application/x-www-form-urlencoded"
+                "Content-Type":"application/json, application/x-www-form-urlencoded"
             }
         })
         .then(res => res.json())
@@ -60,8 +60,7 @@ class cluster extends Component {
         fetch(this.url+"api/clusters/", {
             method:"GET",
             headers:{
-                "Content-Type":"application/json",
-                "Content-Type":"application/x-www-form-urlencoded"
+                "Content-Type":"application/json, application/x-www-form-urlencoded"
             }
         })
         .then(res => res.json())
@@ -77,9 +76,9 @@ class cluster extends Component {
         })
     }
 
-    UNSAFE_componentWillMount(){
-        return true
-    }
+    // UNSAFE_componentWillMount(){
+    //     return true
+    // }
 
     render() {
         return (

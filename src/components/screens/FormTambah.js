@@ -18,8 +18,7 @@ export default function FormTambah() {
         fetch("http://localhost:8000/api/get-interest/", {
             method:"GET",
             headers:{
-                "Content-Type":"applic  ation/json",
-                "Content-Type":"application/x-www-form-urlencoded"
+                "Content-Type":"application/json"
             }
         })
         .then(res => res.json())

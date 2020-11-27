@@ -28,9 +28,9 @@ const Login = ()  => {
             }else{
                 localStorage.setItem("refresh", data.tokens.refresh)
                 localStorage.setItem("access token", data.tokens.access)
-                localStorage.setItem("user", JSON.stringify(data.username))
+                localStorage.setItem("user", data.username)
                 localStorage.setItem("id_user", JSON.stringify(data.id))
-                localStorage.setItem("email", JSON.stringify(data.email))
+                localStorage.setItem("email", data.email)
                 dispatch({type:"USER", payload:data.username})
                 M.toast({html: "SignIn Successfully!", classes:"#43a047 green darken-1"})
                 history.push('/home')

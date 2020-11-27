@@ -1,9 +1,9 @@
 import React from 'react'
 import '../../App.css'
+import ListStudents from './ListStudents'
 import FormTambah from './FormTambah'
-import ListMyStudents from './ListMyStudents'
 
-class Siswa extends React.Component{
+class AdminSiswa extends React.Component{
 
     constructor(props){
         super(props)
@@ -44,11 +44,11 @@ class Siswa extends React.Component{
                             ) : null}
                         </div>
                     </div>
-                    <ListMyStudents/>
+                    <ListStudents/>
                 </div>
             </div>
         );
     }
 }
 
-export default Siswa
+export default AdminSiswa

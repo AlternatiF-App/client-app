@@ -71,13 +71,13 @@ const DetailSiswa = () => {
                             </div>
                         </div>
 
-                        {data.cluster == 0 &&
+                        {data.cluster === 0 &&
                             <p className="col s12">Siswa ini masuk kedalam cluster atau kelas ekstrakurikuler <strong>Matematika</strong></p>
                         }
-                        {data.cluster == 1 &&
+                        {data.cluster === 1 &&
                             <p className="col s12">Siswa ini masuk kedalam cluster atau kelas ekstrakurikuler <strong>Ilmu Pengetahuan Alam</strong></p>
                         }
-                        {data.cluster == 2 &&
+                        {data.cluster === 2 &&
                             <p className="col s12">Siswa ini masuk kedalam cluster atau kelas ekstrakurikuler <strong>Bahasa Indonesia</strong></p>
                         }
                     </div>

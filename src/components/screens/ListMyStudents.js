@@ -4,7 +4,7 @@ import UpdateCluster from './Cluster'
 import '../../App.css'
 import {Link} from 'react-router-dom'
 
-export default class ListStudents extends Component {
+export default class ListMyStudents extends Component {
 
     constructor(props){
         super(props)
@@ -105,11 +105,7 @@ export default class ListStudents extends Component {
     }
 
     componentDidMount(){
-        this.fetchListStudents()
-    }
-
-    fetchListStudents(){
-        fetch(this.state.url_student, {
+        fetch(this.state.url_student+localStorage.getItem("user")+'/', {
             method:"GET",
             headers:{
                 "Content-Type":"application/json",

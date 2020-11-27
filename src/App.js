@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import Home from './components/screens/Home'
 import Login from './components/screens/Login'
 import Siswa from './components/screens/Siswa'
+import AdminSiswa from './components/screens/AdminSiswa'
 import Cluster from './components/screens/Cluster'
 import DetailSiswa from './components/screens/DetailSiswa'
 import Minat from './components/screens/Minat'
@@ -18,8 +19,10 @@ const Routing = () => {
 
   const history = useHistory()
   const {state, dispatch} = useContext(UserContext)
+  
   useEffect(() => {
-    const username = JSON.parse(localStorage.getItem("user"))
+    const username = localStorage.getItem("user")
+    console.log("username", username)
     if(username){
       dispatch({type:"USER", payload:username})
       history.push("/home")
@@ -40,6 +43,10 @@ const Routing = () => {
       <Route path="/siswa">
         <Navbar/>
         <Siswa/>
+      </Route>
+      <Route path="/admin-siswa">
+        <Navbar/>
+        <AdminSiswa/>
       </Route>
       <Route path="/cluster">
         <Navbar/>

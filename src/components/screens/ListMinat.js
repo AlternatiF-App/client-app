@@ -14,8 +14,7 @@ class ListMinat extends React.Component{
         fetch("http://localhost:8000/api/get-interest/", {
             method:"GET",
             headers:{
-                "Content-Type":"application/json",
-                "Content-Type":"application/x-www-form-urlencoded"
+                "Content-Type":"application/json"
             }
         })
         .then(res => res.json())
