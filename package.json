@@ -11,10 +11,12 @@
     "jquery": "^3.5.1",
     "materialize-css": "^1.0.0-rc.2",
     "react": "^16.13.1",
+    "react-avatar": "^3.9.7",
     "react-cookie": "^4.0.3",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "react-user-avatar": "^1.10.0"
   },
   "scripts": {
     "start": "react-scripts start",
