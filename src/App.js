@@ -10,6 +10,7 @@ import Minat from './components/screens/Minat'
 import Tentang from './components/screens/Tentang'
 import Bantuan from './components/screens/Bantuan'
 import Users from "./components/screens/AdminAddUser/Users"
+import DetailUser from "./components/screens/AdminAddUser/DetailUser"
 import 'materialize-css/dist/css/materialize.min.css';
 import "./App.css"
 import {BrowserRouter,  Route, Switch, useHistory} from 'react-router-dom'
@@ -60,6 +61,10 @@ const Routing = () => {
       <Route path="/get-users">
         <Navbar/>
         <Users/>
+      </Route>
+      <Route path="/detail-user/:userid">
+        <Navbar/>
+        <DetailUser/>
       </Route>
       <Route path="/minat">
         <Navbar/>
