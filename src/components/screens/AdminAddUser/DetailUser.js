@@ -26,27 +26,30 @@ export default function DetailUser() {
     })
 
     return (
-        <div className="container">
-            <div className="section">
-                <div className="row">
-                    <h1 className="left col s12">Detail User</h1>
-                    <Avatar size="90pt" color={Avatar.getRandomColor('sitebase', ['red', 'green', 'blue'])} name={data.username} />
+        <div style={{
+            maxWidth:"850px",
+            margin:"90px auto",
+        }}>
+            <div
+                style={{
+                    margin:"18px 0px"
+                }}
+            >
+                <h2 style={{textAlign:"center"}}>Detail User</h2>
+                <div style={{
+                    display:"flex",
+                    justifyContent:"space-around"
+                }}>
                     <div>
-                        <p className="col s6">ID : </p>
-                        <p className="col s6">{data.id}</p>
-                    </div>                    
+                        <Avatar size="150pt" color={Avatar.getRandomColor('sitebase', ['red', 'green', 'blue'])} name={data.username} />
+                    </div>
                     <div>
-                        <p className="col s6">Nama : </p>
-                        <p className="col s6">{data.username}</p>
-                    </div>                    
-                    <div>
-                        <p className="col s6">Email : </p>
-                        <p className="col s6">{data.email}</p>
-                    </div>                    
-                    <div>
-                        <p className="col s6">Wali kelas : </p>
-                        <p className="col s6">{data.teacher_class}</p>
-                    </div>                    
+                        <h4>{data.username}</h4>
+                        <h4>{data.email}</h4>
+                        <div style={{display:"flex", justifyContent:"space-between", width:"108%"}}>
+                            <h6>Wali Kelas {data.teacher_class}</h6>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

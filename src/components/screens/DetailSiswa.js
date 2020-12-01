@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
+import Avatar from 'react-avatar';
 import '../../App.css'
 
-const DetailSiswa = () => {
+export default function DetailSiswa(){
 
-    const {siswaid} = useParams()
-    const [data, setData] = useState([])
-    const url = "http://localhost:8000/"
+    var {siswaid} = useParams()
+    var [data, setData] = useState([])
+    var url = "http://localhost:8000/"
 
     useEffect(() => {
         fetch(`${url}api/students/${siswaid}/`, {
@@ -19,7 +20,7 @@ const DetailSiswa = () => {
         })
         .then(res => res.json())
         .then(result => {
-            console.log("detail siswa",result)
+            console.log("detail siswa", result)
             setData(result)
         })
         .catch(err => {
@@ -28,62 +29,63 @@ const DetailSiswa = () => {
     })
 
     return (
-        <div className="container">
-            <div className="section">
-                    <div className="row">
-                        <h1 className="left col s12">Detail Siswa</h1>
-                        <div>
-                            <p className="col s6">NIS : </p>
-                            <p className="col s6">{data.id}</p>
-                        </div>
-                        <div>
-                            <p className="col s6">Nama Lengkap : </p>
-                            <p className="col s6">{data.fullname}</p>
-                        </div>
-                        {data.id_minat == 1 &&
-                            <div>
-                                <p className="col s6">Minat : </p>
-                                <p className="col s6">Matematika</p>
-                            </div>
-                        }
-                        {data.id_minat == 2 &&
-                            <div>
-                                <p className="col s6">Minat : </p>
-                                <p className="col s6">Ilmu Pengetahuan Alam</p>
-                            </div>
-                        }
-                        {data.id_minat == 3 &&
-                            <div>
-                                <p className="col s6">Minat : </p>
-                                <p className="col s6">Bahasa Indonesia</p>
-                            </div>
-                        }
-                        <div>
-                            <div>
-                                <p className="col s4">Nilai Matematika </p>
-                                <p className="col s4">Nilai IPA </p>
-                                <p className="col s4">Nilai B. Indonesia </p>
-                            </div>
-                            <div>
-                                <p className="col s4">{data.score_math} </p>
-                                <p className="col s4">{data.score_science} </p>
-                                <p className="col s4">{data.score_indonesian} </p>
-                            </div>
-                        </div>
-
-                        {data.cluster === 0 &&
-                            <p className="col s12">Siswa ini masuk kedalam cluster atau kelas ekstrakurikuler <strong>Matematika</strong></p>
-                        }
-                        {data.cluster === 1 &&
-                            <p className="col s12">Siswa ini masuk kedalam cluster atau kelas ekstrakurikuler <strong>Ilmu Pengetahuan Alam</strong></p>
-                        }
-                        {data.cluster === 2 &&
-                            <p className="col s12">Siswa ini masuk kedalam cluster atau kelas ekstrakurikuler <strong>Bahasa Indonesia</strong></p>
-                        }
+        <div style={{
+            maxWidth:"850px",
+            margin:"90px auto",
+        }}>
+            <div
+                style={{
+                    margin:"18px 0px"
+                }}
+            >
+                <h2 style={{textAlign:"left"}}>Detail Siswa</h2>
+                <div style={{
+                    display:"flex",
+                    justifyContent:"space-around"
+                }}>
+                    <div>
+                        <Avatar size="150pt" color={Avatar.getRandomColor('sitebase', ['red', 'green', 'blue'])} name={data.fullname} />
                     </div>
+                    <div>
+                        <h4>{data.id}</h4>
+                        <h4>{data.fullname}</h4>
+                        <div style={{display:"flex", justifyContent:"space-between", width:"108%"}}>
+                            <h5 style={{backgroundColor:"yellow",borderRadius:"8px", padding:"15px"}}>
+                                Kelas {data.student_class}
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                <div style={{
+                    display:"flex",
+                    justifyContent:"space-around"
+                }}>
+                    <h5 style={{backgroundColor:"green",borderRadius:"10px", padding:"15px", color:"white"}}>
+                        Matematika {data.score_math}
+                    </h5>
+                    <h5 style={{backgroundColor:"green",borderRadius:"10px", padding:"15px", color:"white"}}>
+                        IPA {data.score_science}
+                    </h5>
+                    <h5 style={{backgroundColor:"green",borderRadius:"10px", padding:"15px", color:"white"}}>
+                        B. Indonesia {data.score_indonesian}
+                    </h5>
+                </div>
+
+                <div style={{
+                    display:"flex",
+                    justifyContent:"space-around"
+                }}>
+                    {data.cluster === "0" &&
+                        <h4 className="col s12">Siswa ini masuk kedalam cluster atau kelas ekstrakurikuler <strong>Matematika</strong></h4>
+                    }
+                    {data.cluster === "1" &&
+                        <h4 className="col s12">Siswa ini masuk kedalam cluster atau kelas ekstrakurikuler <strong>Ilmu Pengetahuan Alam</strong></h4>
+                    }
+                    {data.cluster === "2" &&
+                        <h4 className="col s12">Siswa ini masuk kedalam cluster atau kelas ekstrakurikuler <strong>Bahasa Indonesia</strong></h4>
+                    }
+                </div>
             </div>
         </div>
     )
 }
-
-export default DetailSiswa
