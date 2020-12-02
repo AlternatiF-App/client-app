@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {useHistory} from 'react-router-dom'
 
 export default function AddUser() {
 
@@ -6,6 +7,8 @@ export default function AddUser() {
     var [email, setEmail] = useState("")
     var [password, setPassword] = useState("")
     var [teacher_class, setClass] = useState(null)
+
+    const history = useHistory()
 
     const onSubmit = () => {
         fetch("http://localhost:8000/api/register/",  {
@@ -23,6 +26,11 @@ export default function AddUser() {
         .then(res => res.json())
         .then(results => {
             console.log("ADDUSER", results)
+            if(results){
+                history.push("/home")
+            }else{
+                history.push("/get-users")
+            }
         })
         .catch(error => {
             console.log(error)

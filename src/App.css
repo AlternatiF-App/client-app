@@ -15,17 +15,32 @@
 .sec-1-wrap{
     background-image: url("assets/img/login.jpeg");
     background-size: cover;
-    padding: 100px 0 10px 0;
+    /* padding: 100px 0 10px 0; */
     height: 600px;
+}
+
+.bg-text{
+    background-color: whitesmoke;
+    width: fit-content;
+    height: fit-content;
+    padding: 20px;
+    margin: 130px 0;
 }
 
 .head-text{
     font-weight: bold;
 }
 
+.btn-large{
+    margin: 10px 0;
+}
+
 .ava-img{
     border-radius: 50%;
     height: 100px;
+    width: 100px;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 .ava-img:hover{
     border: black solid 3px;

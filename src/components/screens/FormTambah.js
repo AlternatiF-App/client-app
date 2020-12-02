@@ -54,7 +54,11 @@ export default function FormTambah() {
         .then(res => res.json())
         .then(result => {
             // console.log("POST", result)
-            history.push("/siswa")
+            if(result){
+                history.push("/siswa")
+            }else{
+                history.push("/home")
+            }
         }).catch(err => {
             console.log(err)
         })

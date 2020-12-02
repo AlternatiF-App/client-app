@@ -1,6 +1,8 @@
 import React from 'react'
 import '../../App.css'
-import avaImg from '../../assets/img/ava.jpg'
+import img1 from '../../assets/img/05.jpg'
+import img2 from '../../assets/img/06.jpg'
+import img3 from '../../assets/img/03.jpg'
 
 export default function Home() {
 
@@ -8,11 +10,9 @@ export default function Home() {
         <>
         <div className="section sec-1-wrap no-pad-bot" id="index-banner">
             <div className="container">
-                <h1 className="header center black-text head-text">Klasifikasi Siswa</h1>
-                <div className="row center">
-                    <h5 className="header col s12 black-text">Menentukan kelas ekstrakurikuler olimpiade untuk siswa.</h5>
-                </div>
-                <div className="row center">
+                <div className="row center bg-text">
+                    <h1 className="header center black-text head-text">Klasifikasi Siswa</h1>
+                    <h5 className="header center black-text head-text">Menentukan kelas ekstrakurikuler olimpiade untuk siswa.</h5>
                     <a id="download-button" className="btn-large waves-effect waves-light black">Get Started</a>
                 </div>
             </div>
@@ -25,7 +25,7 @@ export default function Home() {
                 <div className="col s12 m4">
                     <div className="icon-block">
                         <h2 className="center light-blue-text">
-                            <img className="ava-img" src={avaImg}/>
+                            <img className="ava-img" src={img1}/>
                         </h2>
                         <h5 className="center">Kepala Madrasah</h5>
 
@@ -36,7 +36,7 @@ export default function Home() {
                 <div className="col s12 m4">
                     <div className="icon-block">
                         <h2 className="center light-blue-text">
-                            <img className="ava-img" src={avaImg}/>
+                            <img className="ava-img" src={img2}/>
                         </h2>
                         <h5 className="center">Waka Kesiswaan</h5>
 
@@ -47,7 +47,7 @@ export default function Home() {
                 <div className="col s12 m4">
                     <div className="icon-block">
                         <h2 className="center light-blue-text">
-                            <img className="ava-img" src={avaImg}/>
+                            <img className="ava-img" src={img3}/>
                         </h2>
                         <h5 className="center">Waka Kurikulum</h5>
 
@@ -67,23 +67,9 @@ export default function Home() {
                 <h5 className="white-text">MI Ash - Shodiq</h5>
                 <p className="grey-text text-lighten-4">Salah satu Madrasah di Kecamatan Bululawang. Banyak kelas ekstrakurikuler disini, dan salah  satunya kelas olimpiade yang mencakup Matematika, IPA dan Bahasa Indonesia.</p>
                 </div>
-                <div className="col l3 s12">
-                <h5 className="white-text">Settings</h5>
-                <ul>
-                    <li><a className="white-text" href="#!">Link 1</a></li>
-                    <li><a className="white-text" href="#!">Link 2</a></li>
-                    <li><a className="white-text" href="#!">Link 3</a></li>
-                    <li><a className="white-text" href="#!">Link 4</a></li>
-                </ul>
-                </div>
-                <div className="col l3 s12">
-                <h5 className="white-text">Connect</h5>
-                <ul>
-                    <li><a className="white-text" href="#!">Link 1</a></li>
-                    <li><a className="white-text" href="#!">Link 2</a></li>
-                    <li><a className="white-text" href="#!">Link 3</a></li>
-                    <li><a className="white-text" href="#!">Link 4</a></li>
-                </ul>
+                <div className="col l6 s12">
+                <h5 className="white-text">Menu</h5>
+                    <FooterMenu/>
                 </div>
             </div>
             </div>
@@ -95,4 +81,27 @@ export default function Home() {
         </footer>
         </>
     )
+}
+
+const FooterMenu = () => {
+    const username = localStorage.getItem("user")
+    if(username === "admin"){
+        return(
+            <ul>
+                <li><a className="white-text" href="#!">Siswa</a></li>
+                <li><a className="white-text" href="#!">Pengguna</a></li>
+                <li><a className="white-text" href="#!">Minat</a></li>
+                <li><a className="white-text" href="#!">Tentang</a></li>
+                <li><a className="white-text" href="#!">Bantuan</a></li>
+            </ul>
+        )
+    }else{
+        return(
+            <ul>
+                <li><a className="white-text" href="#!">Siswa</a></li>
+                <li><a className="white-text" href="#!">Tentang</a></li>
+                <li><a className="white-text" href="#!">Bantuan</a></li>
+            </ul>
+        )
+    }
 }
