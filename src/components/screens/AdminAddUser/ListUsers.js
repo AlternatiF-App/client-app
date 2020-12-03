@@ -103,7 +103,7 @@ export default class ListUsers extends Component {
         const {id, username, teacher_class} = this.state
         return (
             <div>
-                <table className="striped">
+                <table className="striped centered">
                     <thead>
                         <tr>
                             <th>#</th>

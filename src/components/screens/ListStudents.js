@@ -12,8 +12,8 @@ export default class ListStudents extends Component {
         this.state = {
             url : 'http://localhost:8000/',
             url_student : 'http://localhost:8000/api/students/',
-            prev_url : '',
-            next_url : '',
+            prev_url : "",
+            next_url : "",
             viewCompleted: false,
             updateSiswa : false,
             detailSiswa : false,
@@ -106,6 +106,7 @@ export default class ListStudents extends Component {
 
     componentDidMount(){
         this.fetchListStudents()
+        console.log("PREV", this.state.prev_url)
     }
 
     fetchListStudents(){
@@ -181,7 +182,31 @@ export default class ListStudents extends Component {
         }  =  this.state
         return (
             <div>
-                <table className="striped">
+                <div>
+                    <ul className="pagination right">
+                        {
+                            this.state.prev_url === undefined ? 
+                            null :
+                            <li style={{marginRight:"5px", borderRadius:"5px"}} 
+                                className="waves-effect active">
+                                <a onClick={() => this.onPrev()}>
+                                    Prev
+                                </a>
+                            </li>
+                        }
+                        {
+                            this.state.next_url === undefined ? 
+                            null :
+                            <li style={{marginLeft:"5px", borderRadius:"5px"}}
+                                className="waves-effect active">
+                                <a onClick={() => this.onNext()}>
+                                    Next
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <table className="striped centered">
                     <thead>
                         <tr>
                             <th>NIS</th>
@@ -315,23 +340,6 @@ export default class ListStudents extends Component {
                         }
                     </tbody>
                 </table>
-
-                <div>
-                    <ul className="pagination right">
-                        <li style={{marginRight:"5px", borderRadius:"5px"}} 
-                            className="waves-effect active">
-                                <a onClick={() => this.onPrev()}>
-                                    Prev
-                                </a>
-                        </li>
-                        <li style={{marginLeft:"5px", borderRadius:"5px"}}
-                            className="waves-effect active">
-                                <a onClick={() => this.onNext()}>
-                                    Next
-                                </a>
-                        </li>
-                    </ul>
-                </div>
             </div>
         )
     }
