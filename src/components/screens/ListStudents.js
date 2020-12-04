@@ -106,7 +106,7 @@ export default class ListStudents extends Component {
 
     componentDidMount(){
         this.fetchListStudents()
-        console.log("PREV", this.state.prev_url)
+        console.log("NEXT", this.state.next_url)
     }
 
     fetchListStudents(){
@@ -121,7 +121,7 @@ export default class ListStudents extends Component {
         .then(res => res.json())
         .then(result => {
             this.setState({
-                prev_url : result.prev,
+                prev_url : result.previous,
                 next_url : result.next,
                 siswaData : result.results
             })
@@ -185,7 +185,7 @@ export default class ListStudents extends Component {
                 <div>
                     <ul className="pagination right">
                         {
-                            this.state.prev_url === undefined ? 
+                            this.state.prev_url === null ? 
                             null :
                             <li style={{marginRight:"5px", borderRadius:"5px"}} 
                                 className="waves-effect active">
@@ -195,7 +195,7 @@ export default class ListStudents extends Component {
                             </li>
                         }
                         {
-                            this.state.next_url === undefined ? 
+                            this.state.next_url === null ? 
                             null :
                             <li style={{marginLeft:"5px", borderRadius:"5px"}}
                                 className="waves-effect active">
