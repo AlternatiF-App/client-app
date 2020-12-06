@@ -23,8 +23,8 @@ const Login = ()  => {
         .then(res => res.json())
         .then(data => {
             // console.log("login",  data)
-            if(data.error){
-                M.toast({html: data.error, classes:"#c62828 red darken-3"})
+            if(data.detail){
+                M.toast({html: data.detail, classes:"#c62828 red darken-3"})
             }else{
                 localStorage.setItem("refresh", data.tokens.refresh)
                 localStorage.setItem("access token", data.tokens.access)
