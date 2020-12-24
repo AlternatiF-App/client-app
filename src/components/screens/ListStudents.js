@@ -60,7 +60,9 @@ export default class ListStudents extends Component {
         .then(res => res.json())
         .then(result => {
             console.log("UPDATE", result)
-        }).catch(err => {
+        })
+        .then(window.location.reload())
+        .catch(err => {
             console.log(err)
         })
     }
@@ -97,8 +99,8 @@ export default class ListStudents extends Component {
         .then(res => res.json())
         .then(result => {
             console.log(result)
-            window.location.reload()
         })
+        .then(window.location.reload())
         .catch(err => {
             console.log(err)
         })

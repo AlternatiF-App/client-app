@@ -30,9 +30,10 @@ class cluster extends Component {
             })
             .then(res => res.json())
             .then(result => {
+                console.log("UPT", result)
                 return result
-                .then(window.location.reload())
             })
+            // .then(window.location.reload())
             .catch(err => {
                 console.log(err)
             })
