@@ -9,6 +9,7 @@ import DetailSiswa from './components/screens/DetailSiswa'
 import Minat from './components/screens/Minat'
 import Tentang from './components/screens/Tentang'
 import Bantuan from './components/screens/Bantuan'
+import ClusAll from "./components/screens/Cluster"
 import Users from "./components/screens/AdminAddUser/Users"
 import DetailUser from "./components/screens/AdminAddUser/DetailUser"
 import 'materialize-css/dist/css/materialize.min.css';
@@ -53,6 +54,10 @@ const Routing = () => {
       <Route path="/cluster">
         <Navbar/>
         <Cluster/>
+      </Route>
+      <Route path="/update-all">
+        <Navbar/>
+        <ClusAll/>
       </Route>
       <Route path="/detail-siswa/:siswaid">
         <Navbar/>
