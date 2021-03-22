@@ -141,6 +141,7 @@ export default class ListMyStudents extends Component {
             console.log("IDSTUDENT", this.state.clustersStudents)
         })
     }
+    
     onUp = () => {
         var updateData = []
         var params = {}
@@ -244,6 +245,22 @@ export default class ListMyStudents extends Component {
         }  =  this.state
         return (
             <div>
+                <div>
+                    <ul className="pagination right">
+                        <li style={{marginRight:"5px", borderRadius:"5px"}} 
+                            className="waves-effect active">
+                                <a onClick={() => this.onPrev()}>
+                                    Prev
+                                </a>
+                        </li>
+                        <li style={{marginLeft:"5px", borderRadius:"5px"}}
+                            className="waves-effect active">
+                                <a onClick={() => this.onNext()}>
+                                    Next
+                                </a>
+                        </li>
+                    </ul>
+                </div>
                 <table className="striped">
                     <thead>
                         <tr>
@@ -495,23 +512,6 @@ export default class ListMyStudents extends Component {
                         }
                     </tbody>
                 </table>
-
-                <div>
-                    <ul className="pagination right">
-                        <li style={{marginRight:"5px", borderRadius:"5px"}} 
-                            className="waves-effect active">
-                                <a onClick={() => this.onPrev()}>
-                                    Prev
-                                </a>
-                        </li>
-                        <li style={{marginLeft:"5px", borderRadius:"5px"}}
-                            className="waves-effect active">
-                                <a onClick={() => this.onNext()}>
-                                    Next
-                                </a>
-                        </li>
-                    </ul>
-                </div>
             </div>
         )
     }
