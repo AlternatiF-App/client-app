@@ -169,7 +169,7 @@ export default class ListMyStudents extends Component {
             console.log("UPDATE", res)
         }
         fetchUpdateClusters()
-        window.location.reload()
+        // window.location.reload()
     }
 
     fetchListStudents(){
@@ -247,18 +247,26 @@ export default class ListMyStudents extends Component {
             <div>
                 <div>
                     <ul className="pagination right">
-                        <li style={{marginRight:"5px", borderRadius:"5px"}} 
-                            className="waves-effect active">
+                    {
+                            this.state.prev_url === null ? 
+                            null :
+                            <li style={{marginRight:"5px", borderRadius:"5px"}} 
+                                className="waves-effect active">
                                 <a onClick={() => this.onPrev()}>
                                     Prev
                                 </a>
-                        </li>
-                        <li style={{marginLeft:"5px", borderRadius:"5px"}}
-                            className="waves-effect active">
+                            </li>
+                        }
+                        {
+                            this.state.next_url === null ? 
+                            null :
+                            <li style={{marginLeft:"5px", borderRadius:"5px"}}
+                                className="waves-effect active">
                                 <a onClick={() => this.onNext()}>
                                     Next
                                 </a>
-                        </li>
+                            </li>
+                        }
                     </ul>
                 </div>
                 <table className="striped">

@@ -184,7 +184,7 @@ export default class ListStudents extends Component {
             console.log("UPDATE", res)
         }
         fetchUpdateClusters()
-        window.location.reload()
+        // window.location.reload()
     }
 
     fetchListStudents(){
